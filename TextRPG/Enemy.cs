@@ -10,11 +10,13 @@ namespace TextRPG
     {
         public int xpGranted = 0;
 
-        public Enemy(string name, int health, int xpGranted)
+        public Enemy(string name, int health, int dice, int xpGranted)
         {
             this.name = name;
             this.health = health;
+            this.dice = dice;
             this.xpGranted = xpGranted;
+            this.initiative = new Random(Guid.NewGuid().GetHashCode()).Next(1, dice);
         }
 
         public void Attack(Player player)

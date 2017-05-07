@@ -6,7 +6,7 @@ namespace TextRPG
     class Character
     {
         public string name;
-        public int level, health, maxHealth, initiative;
+        public int level, health, maxHealth, initiative, dice;
         public bool firstRound = true;
 
         private Random rand = new Random(Guid.NewGuid().GetHashCode());
@@ -20,7 +20,6 @@ namespace TextRPG
             this.level = 0;
             this.health = 0;
             this.maxHealth = health;
-            this.initiative = rand.Next(1, 20) + level;
         }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace TextRPG
             this.level = level;
             this.health = health;
             this.maxHealth = health;
-            this.initiative = rand.Next(1, 20) + level;
         }
 
         /// <summary>

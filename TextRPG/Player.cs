@@ -12,8 +12,10 @@ namespace TextRPG
         
         public int xp;
         public int xpToLevel;
-        public double damage;
+        public int damage;
         public bool myTurn;
+
+        private Random rand = new Random(Guid.NewGuid().GetHashCode());
 
         public Player(string name, int maxHealth)
         {
@@ -23,6 +25,8 @@ namespace TextRPG
             this.xpToLevel = CalculateXPToLevel();
             this.health = maxHealth;
             this.maxHealth = maxHealth;
+            dice = 20;
+            this.initiative = rand.Next(1, dice);
         }
 
         public bool IsTurn(Enemy enemy)
@@ -50,16 +54,27 @@ namespace TextRPG
 
         public void Attack(Enemy enemy)
         {
-            Console.WriteLine("{0} attacks {1} for {2} damage.", this.name, enemy.name, (int)GenerateDamage(enemy));
-            Console.WriteLine("{0} has {1} HP left.", enemy.name, enemy.health);
+            if(myTurn)
+            {
+                Console.WriteLine("{0} attacks {1} for {2} damage.", this.name, enemy.name, GenerateDamage(enemy));
+                Console.WriteLine("{0} has {1} HP left.", enemy.name, enemy.health);
+            }
+            else
+            {
+                Console.WriteLine("{0} attacks {1} for {2} damage.", enemy.name, this.name, GenerateDamage(enemy));
+                Console.WriteLine("{0} has {1} HP left.", this.name, this.health);
+            }
+                
         }
 
         public double GenerateDamage(Enemy enemy)
         {
-            Random rand = new Random();
+            damage = rand.Next(1, dice) + level;
 
-            damage = level * rand.Next(level, level * xpToLevel);
-            enemy.health -= (int)damage;
+            if (myTurn)
+                enemy.health -= (int)damage;
+            else
+                this.health -= (int)damage;
 
             return damage;
         }
