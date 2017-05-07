@@ -6,8 +6,8 @@ namespace TextRPG
     class Character
     {
         public string name;
-        public int level, health, maxHealth, initiative, dice;
-        public bool firstRound = true;
+        public int level, health, maxHealth, initiative, dice, damage;
+        public bool turn;
 
         private Random rand = new Random(Guid.NewGuid().GetHashCode());
 
@@ -17,7 +17,7 @@ namespace TextRPG
         public Character()
         {
             this.name = "unknown";
-            this.level = 0;
+            this.level = 1;
             this.health = 0;
             this.maxHealth = health;
         }

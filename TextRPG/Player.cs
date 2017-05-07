@@ -12,8 +12,6 @@ namespace TextRPG
         
         public int xp;
         public int xpToLevel;
-        public int damage;
-        public bool myTurn;
 
         private Random rand = new Random(Guid.NewGuid().GetHashCode());
 
@@ -29,69 +27,23 @@ namespace TextRPG
             this.initiative = rand.Next(1, dice);
         }
 
-        public bool IsTurn(Enemy enemy)
-        {
-            if(firstRound)
-            {
-                if (this.initiative >= enemy.initiative)
-                {
-                    myTurn = true;
-                }
-                else
-                {
-                    myTurn = false;
-                }
-
-                firstRound = false;
-            }
-            else
-            {
-                myTurn = !myTurn; 
-            }
-
-            return myTurn;
-        }
-
-        public void Attack(Enemy enemy)
-        {
-            if(myTurn)
-            {
-                Console.WriteLine("{0} attacks {1} for {2} damage.", this.name, enemy.name, GenerateDamage(enemy));
-                Console.WriteLine("{0} has {1} HP left.", enemy.name, enemy.health);
-            }
-            else
-            {
-                Console.WriteLine("{0} attacks {1} for {2} damage.", enemy.name, this.name, GenerateDamage(enemy));
-                Console.WriteLine("{0} has {1} HP left.", this.name, this.health);
-            }
-                
-        }
-
-        public double GenerateDamage(Enemy enemy)
-        {
-            damage = rand.Next(1, dice) + level;
-
-            if (myTurn)
-                enemy.health -= (int)damage;
-            else
-                this.health -= (int)damage;
-
-            return damage;
-        }
-
         public void AddExperience(int amount)
         {
-            if (this.xp + amount >= xpToLevel)
+            xp += amount;
+            if (xp >= xpToLevel)
                 LevelUp();
             else
-                this.xp += amount;
+                xp += amount;
         }
 
         private void LevelUp()
         {
-            this.level += 1;
-            xpToLevel = CalculateXPToLevel() % xp;
+            this.level += level;
             xp = 0;
+            CalculateXPToLevel();
+
+            Console.WriteLine("Leveled up! {0} is now level {1}", name, level);
+            Console.WriteLine();
         }
 
         public void GetInventory()
@@ -131,7 +83,8 @@ namespace TextRPG
 
         public int CalculateXPToLevel()
         {
-            return xpToLevel = level * 100;
+            xpToLevel = level * 100;
+            return xpToLevel;
         }
     }
 }
