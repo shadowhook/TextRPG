@@ -1,0 +1,6 @@
+c:\users\camer\documents\visual studio 2017\Projects\TextRPG\TextRPG\bin\Debug\TextRPG.exe.config
+c:\users\camer\documents\visual studio 2017\Projects\TextRPG\TextRPG\bin\Debug\TextRPG.exe
+c:\users\camer\documents\visual studio 2017\Projects\TextRPG\TextRPG\bin\Debug\TextRPG.pdb
+c:\users\camer\documents\visual studio 2017\Projects\TextRPG\TextRPG\obj\Debug\TextRPG.csprojResolveAssemblyReference.cache
+c:\users\camer\documents\visual studio 2017\Projects\TextRPG\TextRPG\obj\Debug\TextRPG.exe
+c:\users\camer\documents\visual studio 2017\Projects\TextRPG\TextRPG\obj\Debug\TextRPG.pdb
