@@ -12,12 +12,20 @@ namespace TextRPG
         public List<Enemy> enemies;
         public bool active = false;
 
+        /// <summary>
+        /// Level constructor
+        /// </summary>
+        /// <param name="description">Description of level</param>
+        /// <param name="enemies">Enemies in level</param>
         public Level(string description, List<Enemy> enemies)
         {
             this.description = description;
             this.enemies = enemies;
         }
 
+        /// <summary>
+        /// List the enemies in the level
+        /// </summary>
         public void ListEnemies()
         {
             if (enemies.Count <= 0)

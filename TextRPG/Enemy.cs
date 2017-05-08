@@ -12,6 +12,14 @@ namespace TextRPG
 
         private Random rand = new Random(Guid.NewGuid().GetHashCode());
 
+        /// <summary>
+        /// Enemy constructor
+        /// </summary>
+        /// <param name="name">Name of enemy</param>
+        /// <param name="level">Level of enemy</param>
+        /// <param name="health">Health of enemy</param>
+        /// <param name="dice">What die to roll</param>
+        /// <param name="xpGranted">Amount of XP granted per kill</param>
         public Enemy(string name, int level, int health, int dice, int xpGranted)
         {
             this.name = name;
@@ -22,6 +30,10 @@ namespace TextRPG
             this.initiative = new Random(Guid.NewGuid().GetHashCode()).Next(1, dice);
         }
 
+        /// <summary>
+        /// Grant player XP for kill
+        /// </summary>
+        /// <param name="player"></param>
         public void GrantXP(Player player)
         {
             Console.WriteLine("{0} dropped {1} XP", name, xpGranted);
@@ -30,6 +42,10 @@ namespace TextRPG
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Randomize a roll for a potion
+        /// </summary>
+        /// <param name="player"></param>
         public void RollForPotion(Player player)
         {
             int random = rand.Next(1, 100);

@@ -34,16 +34,28 @@ namespace TextRPG
             this.id = id;
         }
 
+        /// <summary>
+        /// Set the name of the item
+        /// </summary>
+        /// <param name="name">Name of the item</param>
         public void SetName(string name)
         {
             this.name = name;
         }
 
+        /// <summary>
+        /// Set the quantity of the item.
+        /// </summary>
+        /// <param name="amount">The amount of the item</param>
         public void SetQuantity(int amount)
         {
             this.quantity = amount;
         }
 
+        /// <summary>
+        /// Set the ID of the item
+        /// </summary>
+        /// <param name="id">The ID of the item</param>
         public void SetID(int id)
         {
             this.id = id;

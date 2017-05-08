@@ -8,6 +8,11 @@ namespace TextRPG
 {
     static class InputHandler
     {
+        /// <summary>
+        /// Show the main menu based on the level.
+        /// </summary>
+        /// <param name="level">The level the player is on</param>
+        /// <param name="player">The player object</param>
         public static void Menu(Level level, Player player)
         {
             if(level.active)
