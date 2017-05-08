@@ -17,7 +17,7 @@ namespace TextRPG
            
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Attack");
-            Console.WriteLine("2. Move");
+            Console.WriteLine("2. Use item");
             Console.WriteLine("3. View character sheet.");
             Console.WriteLine("4. Quit");
             Console.Write("> ");
@@ -26,32 +26,39 @@ namespace TextRPG
             switch(input)
             {
                 case 1:
+                    Console.WriteLine();
                     Combat.Engage(level, player);
                     break;
                 case 2:
-                    if (Movement(level) == 1 && level.id == 1)
+                    if(player.inventory.Count > 0)
                     {
-                        level.active = false;
+                        player.inventory[0].Use(player);
+                        Console.WriteLine("Used {0} to heal for {1} HP.", player.inventory[0].name, player.inventory[0].potency);
+                        Console.WriteLine("{0} has {1} HP", player.name, player.health);
+
+                        Console.WriteLine();
+                       
+                        player.inventory.RemoveAt(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No inventory.");
+                        Console.WriteLine();
                     }
                     break;
                 case 3:
+                    Console.WriteLine();
+                    Console.WriteLine("Player name: {0}", player.name);
+                    Console.WriteLine("Player health: {0} / {1} ", player.health, player.maxHealth);
+                    player.GetInventory();
+                    Console.WriteLine();
                     break;
                 case 4:
+                    Environment.Exit(0);
                     break;
                 default:
                     break;
             }
-        }
-
-        public static int Movement(Level level)
-        {
-            Console.WriteLine("The possible exits are: ");
-            level.ListExits();
-
-            Console.WriteLine("Which direction would you like to go?");
-            Console.Write("> ");
-            int direction = Convert.ToInt32(Console.ReadLine());
-            return direction;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace TextRPG
     class Player : Character
     {
         // Contains the player's inventory.
-        public List<Item> inventory = new List<Item>();
+        public List<Potion> inventory = new List<Potion>();
         
         // XP and leveling up are unique to the player.
         public int xp;

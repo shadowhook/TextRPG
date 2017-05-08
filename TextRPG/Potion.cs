@@ -8,7 +8,7 @@ namespace TextRPG
 {
     class Potion : Item
     {
-        private int potency;
+        public int potency;
 
         /// <summary>
         /// Potion constructor that can be called by ID.
@@ -45,25 +45,22 @@ namespace TextRPG
         /// </summary>
         /// <param name="player">The player object that will be using the potion</param>
         /// <returns>Returns the player's health</returns>
-        public int Use(Player player)
+        public void Use(Player player)
         {
-            if(player.health + CalculatePotency() > player.maxHealth)
-            {
-                player.SetHealth(player.maxHealth);
-            }
-            else
-            {
-                player.health += CalculatePotency();
-            }
+            CalculatePotency();
 
-            return player.health;
+            player.health += potency;
+            if(player.health > player.maxHealth)
+            {
+                player.health = player.maxHealth;
+            }
         }
 
         /// <summary>
         /// Helper function. Calculates the potion of potions based on which type of potion the player has
         /// </summary>
         /// <returns>Returns the potency of the potion</returns>
-        private int CalculatePotency()
+        public void CalculatePotency()
         {
             switch (id)
             {
@@ -87,8 +84,6 @@ namespace TextRPG
                     potency = 0;
                     break;
             }
-
-            return potency;
         }
 
         /// <summary>
