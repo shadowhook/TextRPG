@@ -13,8 +13,14 @@ namespace TextRPG
             Player player = new Player("Cameron", 100);
             player.SetLevel(1);
 
+            Level mylevel = LevelOne.Create();
+            mylevel.active = true;
 
-            InputHandler.Menu(LevelOne.Create(), player);
+            InputHandler.Menu(mylevel, player);
+
+            Level secondLevel = LevelTwo.Create();
+            if(InputHandler.Movement(mylevel) == 1)
+                secondLevel.active = true;
 
             // DO NOT REMOVE
             Console.ReadKey();

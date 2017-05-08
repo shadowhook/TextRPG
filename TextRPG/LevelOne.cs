@@ -19,6 +19,7 @@ namespace TextRPG
             enemies.Add(new Enemy("Spider", 1, 40, 4, 50));
             enemies.Add(new Enemy("Pig", 1, 40, 6, 100));
             Description = "Welcome to the first level! Inside, you see a giant pig and spider.\nYou can either test your combat skills now, or proceed to the exits.";
+            
 
             return new Level(1, Description, exits, enemies);
         }

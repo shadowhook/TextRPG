@@ -13,6 +13,7 @@ namespace TextRPG
         public List<Enemy> enemies;
 
         public int id;
+        public bool active = false;
 
         public Level(int id, string description, List<char> exits, List<Enemy> enemies)
         {

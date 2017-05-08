@@ -10,7 +10,11 @@ namespace TextRPG
     {
         public static void Menu(Level level, Player player)
         {
-            Console.WriteLine(level.description);
+            if(level.active)
+            {
+                Console.WriteLine(level.description);
+            }
+           
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Attack");
             Console.WriteLine("2. Move");
@@ -27,7 +31,7 @@ namespace TextRPG
                 case 2:
                     if (Movement(level) == 1 && level.id == 1)
                     {
-
+                        level.active = false;
                     }
                     break;
                 case 3:
