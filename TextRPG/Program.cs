@@ -12,21 +12,9 @@ namespace TextRPG
         {
             Player player = new Player("Cameron", 100);
             player.SetLevel(1);
-            List<char> firstLevelExits = new List<char>();
-            firstLevelExits.Add('N');
 
 
-
-            List<Enemy> firstLevelEnemies = new List<Enemy>();
-            firstLevelEnemies.Add(new Enemy("Spider", 1, 40, 4, 50));
-            firstLevelEnemies.Add(new Enemy("Pig", 1, 40, 6, 100));
-            Level firstLevel = new Level("This is the first level.", firstLevelExits, firstLevelEnemies);
-
-            Console.WriteLine("{0}", firstLevel.description);
-            firstLevel.ListEnemies();
-            firstLevel.ListExits();
-
-            InputHandler.Menu(firstLevel, player, firstLevel.enemies[0]);
+            InputHandler.Menu(LevelOne.Create(), player);
 
             // DO NOT REMOVE
             Console.ReadKey();

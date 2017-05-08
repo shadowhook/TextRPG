@@ -8,7 +8,7 @@ namespace TextRPG
 {
     static class InputHandler
     {
-        public static void Menu(Level level, Player player, Enemy enemy)
+        public static void Menu(Level level, Player player)
         {
             Console.WriteLine(level.description);
             Console.WriteLine("What would you like to do?");
@@ -25,6 +25,10 @@ namespace TextRPG
                     Combat.Engage(level, player);
                     break;
                 case 2:
+                    if (Movement(level) == 1 && level.id == 1)
+                    {
+
+                    }
                     break;
                 case 3:
                     break;
@@ -33,6 +37,17 @@ namespace TextRPG
                 default:
                     break;
             }
+        }
+
+        public static int Movement(Level level)
+        {
+            Console.WriteLine("The possible exits are: ");
+            level.ListExits();
+
+            Console.WriteLine("Which direction would you like to go?");
+            Console.Write("> ");
+            int direction = Convert.ToInt32(Console.ReadLine());
+            return direction;
         }
     }
 }

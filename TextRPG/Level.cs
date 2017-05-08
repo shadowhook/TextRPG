@@ -12,8 +12,11 @@ namespace TextRPG
         public List<char> exits;
         public List<Enemy> enemies;
 
-        public Level(string description, List<char> exits, List<Enemy> enemies)
+        public int id;
+
+        public Level(int id, string description, List<char> exits, List<Enemy> enemies)
         {
+            this.id = id;
             this.description = description;
             this.exits = exits;
             this.enemies = enemies;
@@ -42,7 +45,6 @@ namespace TextRPG
 
         public void ListExits()
         {
-            Console.Write("Exits: ");
             if(exits.Count <= 0)
             {
                 Console.WriteLine("None");
@@ -54,10 +56,7 @@ namespace TextRPG
                 foreach (char c in exits)
                 {
                     ++index;
-                    if(index == exits.Count)
-                        Console.WriteLine("{0}", c);
-                    else
-                        Console.Write("{0}, ", c);
+                    Console.WriteLine("{0}. {1}", index, c);
                 }
             }
            

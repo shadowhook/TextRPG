@@ -8,10 +8,17 @@ namespace TextRPG
 {
     static class Combat
     {
+        // Determines whether to use initiative or turn.
         public static bool FirstRound = true;
 
+        // Random number generator.
         private static Random rand = new Random(Guid.NewGuid().GetHashCode());
 
+        /// <summary>
+        /// Engage until there's no enemies left in the level. Called when player presses 1 from our menu.
+        /// </summary>
+        /// <param name="level">The level the player is on.</param>
+        /// <param name="player">The player object.</param>
         public static void Engage(Level level, Player player)
         {
             while(level.enemies.Count > 0)
@@ -75,8 +82,8 @@ namespace TextRPG
         /// <summary>
         /// Handles attacking, including drawing results to screen.
         /// </summary>
-        /// <param name="player"></param>
-        /// <param name="enemy"></param>
+        /// <param name="player">The player object</param>
+        /// <param name="enemy">The enemy object</param>
         public static void Attack(Player player, Enemy enemy)
         {
             CalculateDamage(player, enemy);
@@ -98,9 +105,8 @@ namespace TextRPG
         /// <summary>
         /// Calculate the amount of damage the character will do this turn.
         /// </summary>
-        /// <param name="player"></param>
-        /// <param name="enemy"></param>
-        /// <returns></returns>
+        /// <param name="player">The player object</param>
+        /// <param name="enemy">The enemy object</param>
         private static void CalculateDamage(Player player, Enemy enemy)
         {
             player.damage = rand.Next(1, player.dice) * player.level;
